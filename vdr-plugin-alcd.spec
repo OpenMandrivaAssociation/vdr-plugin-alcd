@@ -1,7 +1,7 @@
 
 %define plugin	alcd
 %define name	vdr-plugin-%plugin
-%define version	1.2.1
+%define version	1.2.2
 %define rel	1
 
 Summary:	VDR plugin: Activy300 LCD-Plugin
