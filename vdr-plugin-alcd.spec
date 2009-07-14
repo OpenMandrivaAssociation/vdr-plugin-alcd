@@ -38,7 +38,7 @@ default=%{_bindir}/activy.sh
 
 %build
 cd %plugin
-%vdr_plugin_build afp-tool
+%vdr_plugin_build afp-tool -j1
 
 %install
 rm -rf %{buildroot}
