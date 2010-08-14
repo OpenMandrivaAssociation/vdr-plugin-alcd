@@ -1,8 +1,8 @@
 
 %define plugin	alcd
 %define name	vdr-plugin-%plugin
-%define version	1.5.1
-%define rel	3
+%define version	1.5.2
+%define rel	1
 
 Summary:	VDR plugin: Activy300 LCD-Plugin
 Name:		%name
@@ -13,7 +13,6 @@ License:	GPL
 URL:		http://www.htpc-forum.de/
 Source:		vdr-%plugin-%version.tgz
 Source1:	activy.init
-Patch0:		alcd-invalid-const-char-conversion.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
@@ -24,7 +23,6 @@ Enables the LCD display of the Activy300 boxes from Siemens.
 %prep
 %setup -q -c
 cd %plugin
-%patch0 -p1
 chmod a-x BUGS TODO
 %vdr_plugin_prep
 
