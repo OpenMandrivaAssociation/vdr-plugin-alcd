@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+### BEGIN INIT INFO
+# Provides: activy
+# Default-Start: 1 2 3 4 5
+# Short-Description: Activy LCD
+# Description: Turns Activy LCD on and off when starting system
+#              and shutting system down.
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+DAEMON_NAME="Activy LCD"
+LOCK_FILE=/var/lock/subsys/activy
+RETVAL=0
+
+start() {
+    [ -f $LOCK_FILE ] && return
+
+    echo -n "Starting $DAEMON_NAME: "
+    activy_msg.sh $(gprintf "Starting system ...") ""
+    activy.sh
+    echo_success
+    echo
+    touch $LOCK_FILE
+}
+
+stop() {
+    echo -n "Shutting down $DAEMON_NAME: "
+    activy_pb.sh
+    echo_success
+    echo
+    rm -f $LOCK_FILE
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        if [ -f $LOCK_FILE ]; then
+		echo "$DAEMON_NAME was started."
+	else
+		echo "$DAEMON_NAME was not started."
+		RETVAL=1
+	fi
+        ;;
+    reload|restart|condrestart)
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|reload|condrestart|status}"
+        RETVAL=1
+esac
+
+exit $RETVAL
