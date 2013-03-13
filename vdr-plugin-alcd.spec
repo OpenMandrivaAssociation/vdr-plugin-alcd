@@ -1,19 +1,14 @@
-
 %define plugin	alcd
-%define name	vdr-plugin-%plugin
-%define version	1.5.2
-%define rel	1
 
 Summary:	VDR plugin: Activy300 LCD-Plugin
-Name:		%name
-Version:	%version
-Release:	%mkrel %rel
+Name:		vdr-plugin-%plugin
+Version:	1.5.2
+Release:	2
 Group:		Video
 License:	GPL
 URL:		http://www.htpc-forum.de/
 Source:		vdr-%plugin-%version.tgz
 Source1:	activy.init
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
 
@@ -39,7 +34,6 @@ cd %plugin
 %vdr_plugin_build afp-tool -j1
 
 %install
-rm -rf %{buildroot}
 cd %plugin
 %vdr_plugin_install
 
@@ -52,17 +46,10 @@ install -m755 %{SOURCE1} %{buildroot}%{_initrddir}/activy
 %make install PREFIX=%{buildroot}%{_prefix}
 
 %post
-%vdr_plugin_post %plugin
 %_post_service activy
 
 %preun
 %_preun_service activy
-
-%postun
-%vdr_plugin_postun %plugin
-
-%clean
-rm -rf %{buildroot}
 
 %files -f %plugin/%plugin.vdr
 %defattr(-,root,root)
