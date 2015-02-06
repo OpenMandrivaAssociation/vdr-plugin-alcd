@@ -3,7 +3,7 @@
 Summary:	VDR plugin: Activy300 LCD-Plugin
 Name:		vdr-plugin-%plugin
 Version:	1.5.2
-Release:	2
+Release:	3
 Group:		Video
 License:	GPL
 URL:		http://www.htpc-forum.de/
