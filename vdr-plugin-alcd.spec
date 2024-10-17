@@ -6,7 +6,7 @@ Version:	1.5.2
 Release:	4
 Group:		Video
 License:	GPL
-URL:		http://www.htpc-forum.de/
+URL:		https://www.htpc-forum.de/
 Source:		vdr-%plugin-%version.tgz
 Source1:	activy.init
 BuildRequires:	vdr-devel >= 1.6.0
