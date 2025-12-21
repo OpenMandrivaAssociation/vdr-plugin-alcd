@@ -9,6 +9,7 @@ License:	GPL
 URL:		https://www.htpc-forum.de/
 Source:		vdr-%plugin-%version.tgz
 Source1:	activy.init
+BuildRequires:	make
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
 
